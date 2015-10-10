@@ -1,6 +1,6 @@
 package com.bydrives.pioneer.core.client
 
-import com.artemis.{WorldConfiguration, World}
+import com.artemis.{World, WorldConfiguration}
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.bydrives.pioneer.core.GameManager
@@ -16,6 +16,6 @@ class ClientManager() extends GameManager(false) {
 
   override def registerSystems(worldConfiguration: WorldConfiguration): WorldConfiguration = {
     super.registerSystems(worldConfiguration)
-    worldConfiguration.setSystem(new RenderSystem(batch))
+    worldConfiguration.setSystem(new RenderSystem(batch, camera))
   }
 }

@@ -5,8 +5,10 @@ import com.bydrives.pioneer.systems.TestSystem
 
 /**
  * Created by ivesv on 10/10/2015.
+ *
  * The core of this game, it is both used by the server and the client.
  * There are two instances of this manager on a local computer, the server instance and the client instance.
+ *
  */
 class GameManager(isServer: Boolean) {
   var world: World = null

@@ -7,6 +7,5 @@ import com.artemis.BaseSystem
  */
 class TestSystem extends BaseSystem() {
   override def processSystem(): Unit = {
-
   }
 }

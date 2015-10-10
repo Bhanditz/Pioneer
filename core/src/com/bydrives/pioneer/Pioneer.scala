@@ -10,6 +10,7 @@ class Pioneer extends ApplicationAdapter {
 
   override def create: Unit = {
     Gdx.graphics.setDisplayMode(1280, 720, false)
+
     println("Starting Pioneer...")
 
     clientManager = new ClientManager
