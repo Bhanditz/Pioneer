@@ -5,5 +5,7 @@ import com.badlogic.gdx.graphics.Texture
 
 /**
  * Created by ivesv on 10/10/2015.
+ * Adds visual to Entity
+ * @param texture The visual itself
  */
-class Visual(texture: Texture) extends Component
+case class Visual(texture: Texture) extends Component

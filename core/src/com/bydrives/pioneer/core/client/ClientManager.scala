@@ -16,6 +16,6 @@ class ClientManager() extends GameManager(false) {
 
   override def registerSystems(worldConfiguration: WorldConfiguration): WorldConfiguration = {
     super.registerSystems(worldConfiguration)
-    worldConfiguration.setSystem(new RenderSystem)
+    worldConfiguration.setSystem(new RenderSystem(batch))
   }
 }
