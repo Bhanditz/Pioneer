@@ -14,3 +14,6 @@ git checkout -b ivh_my_feature_branch # Create feature branch with your own init
 git push
 ```
 After you're done making changes, create a pull request using Github. You cannot merge the branch into master yourself until you've received a LGTM (Looks Good To Me) from someone else in the comments.
+
+
+PS: Try to use this: https://github.com/reenhanced/gitreflow, makes life much easier.
