@@ -1,25 +1,24 @@
 package com.bydrives.pioneer
 
-import com.badlogic.gdx.ApplicationAdapter
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.GL20
-import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.{Gdx, ApplicationAdapter}
+import com.bydrives.pioneer.core.client.ClientManager
+import com.bydrives.pioneer.core.server.ServerManager
 
 class Pioneer extends ApplicationAdapter {
-  private[pioneer] var batch: SpriteBatch = null
-  private[pioneer] var img: Texture = null
+  private var clientManager: ClientManager = null
+  private var serverManager: ServerManager = null
 
-  override def create {
-    batch = new SpriteBatch
-    img = new Texture("badlogic.jpg")
+  override def create: Unit = {
+    Gdx.graphics.setDisplayMode(1280, 720, false)
+    println("Starting Pioneer...")
+
+    clientManager = new ClientManager
+    serverManager = new ServerManager
   }
 
   override def render {
-    Gdx.gl.glClearColor(1, 0, 0, 1)
-    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
-    batch.begin
-    batch.draw(img, 0, 0)
-    batch.end
+    //Here was a line of code which made me debug for 2 hours. RIP.
+    if (serverManager != null) serverManager.render(Gdx.graphics.getDeltaTime)
+    if (clientManager != null) clientManager.render(Gdx.graphics.getDeltaTime)
   }
 }

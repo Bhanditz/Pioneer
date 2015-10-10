@@ -92,6 +92,7 @@ project(":core") {
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "org.scala-lang:scala-library:2.11.7"
+        compile "net.onedaybeard.artemis:artemis-odb:1.0.1"
     }
 }
 
