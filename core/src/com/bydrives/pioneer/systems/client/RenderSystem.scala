@@ -1,11 +1,11 @@
 package com.bydrives.pioneer.systems.client
 
 import com.artemis.annotations.Wire
-import com.artemis.systems.EntityProcessingSystem
-import com.artemis.{Aspect, ComponentMapper, Entity}
+import com.artemis.systems.IteratingSystem
+import com.artemis.{Aspect, ComponentMapper}
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.badlogic.gdx.graphics.{Texture, GL20, OrthographicCamera}
+import com.badlogic.gdx.graphics.{GL20, OrthographicCamera}
 import com.bydrives.pioneer.components.Position
 import com.bydrives.pioneer.components.client.Visual
 
@@ -14,19 +14,9 @@ import com.bydrives.pioneer.components.client.Visual
  * Renders all entities
  */
 @Wire
-class RenderSystem(batch: SpriteBatch, camera: OrthographicCamera) extends EntityProcessingSystem(Aspect.all(classOf[Visual], classOf[Position])) {
+class RenderSystem(batch: SpriteBatch, camera: OrthographicCamera) extends IteratingSystem(Aspect.all(classOf[Visual], classOf[Position])) {
   var cPosition: ComponentMapper[Position] = null
   var cVisual: ComponentMapper[Visual] = null
-
-
-  override def initialize(): Unit = {
-    val twan: Integer = getWorld.create()
-    val pos = cPosition.create(twan)
-    val texture = cVisual.create(twan)
-    texture.texture = new Texture("twan.jpg")
-    texture.width = 20
-    texture.height = 20
-  }
 
   override def begin(): Unit = {
     super.begin()
@@ -37,7 +27,7 @@ class RenderSystem(batch: SpriteBatch, camera: OrthographicCamera) extends Entit
     batch.begin()
   }
 
-  override def process(e: Entity): Unit = {
+  override def process(e: Int): Unit = {
     val visual: Visual = cVisual.get(e)
     val position: Position = cPosition.get(e)
     batch.draw(visual.texture, position.x, position.y, visual.width, visual.height)

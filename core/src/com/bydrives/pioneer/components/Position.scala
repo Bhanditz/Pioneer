@@ -9,6 +9,6 @@ import com.artemis.Component
  * @param y pos y
  * @param z depth of entity, defines collision/view
  */
-case class Position(var x: Float = 0, var y: Float = 0, var z: Int = 0) extends Component {
+case class Position(var x: Float, var y: Float, var z: Int) extends Component {
   def this() = this(0,0,0)
 }

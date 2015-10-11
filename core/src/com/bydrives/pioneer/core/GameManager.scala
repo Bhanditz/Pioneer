@@ -1,7 +1,7 @@
 package com.bydrives.pioneer.core
 
 import com.artemis.{WorldConfiguration, World}
-import com.bydrives.pioneer.systems.TestSystem
+import com.bydrives.pioneer.systems.{MovementSystem, TestSystem}
 
 /**
  * Created by ivesv on 10/10/2015.
@@ -22,6 +22,7 @@ class GameManager(isServer: Boolean) {
    */
   def registerSystems(worldConfiguration: WorldConfiguration): WorldConfiguration = {
     worldConfiguration.setSystem(new TestSystem)
+    worldConfiguration.setSystem(new MovementSystem)
   }
   /**
    * Gets called every frame
