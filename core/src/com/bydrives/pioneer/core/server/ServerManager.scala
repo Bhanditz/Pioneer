@@ -11,6 +11,7 @@ import com.bydrives.pioneer.core.GameManager
 class ServerManager extends GameManager(true) {
   val camera: OrthographicCamera = new OrthographicCamera(Gdx.graphics.getWidth, Gdx.graphics.getHeight)
   super.world = new World(registerSystems(new WorldConfiguration))
+  super.postRun()
 
   override def registerSystems(worldConfiguration: WorldConfiguration): WorldConfiguration = {
     super.registerSystems(worldConfiguration)

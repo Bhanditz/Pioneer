@@ -1,6 +1,7 @@
 package com.bydrives.pioneer.core
 
 import com.artemis.{WorldConfiguration, World}
+import com.bydrives.pioneer.assets.modules.ModuleLoader
 import com.bydrives.pioneer.systems.MovementSystem
 import com.bydrives.pioneer.systems.managers.{WorldManager, TileManager}
 
@@ -27,6 +28,11 @@ class GameManager(isServer: Boolean) {
     worldConfiguration.setSystem(new TileManager)
     worldConfiguration.setSystem(new WorldManager("Earth", 300, 300))
   }
+
+  def postRun(): Unit = {
+    val moduleLoader: ModuleLoader = new ModuleLoader
+  }
+
   /**
    * Gets called every frame
    * @param delta time between last frame

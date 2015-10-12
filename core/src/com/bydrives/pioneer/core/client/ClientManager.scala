@@ -14,6 +14,7 @@ class ClientManager() extends GameManager(false) with Screen {
   val batch: SpriteBatch = new SpriteBatch()
   val camera: OrthographicCamera = new OrthographicCamera()
   super.world = new World(registerSystems(new WorldConfiguration))
+  super.postRun()
 
   override def registerSystems(worldConfiguration: WorldConfiguration): WorldConfiguration = {
     super.registerSystems(worldConfiguration)
