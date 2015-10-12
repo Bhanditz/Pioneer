@@ -9,5 +9,5 @@ import com.badlogic.gdx.graphics.Texture
  * @param texture The visual itself
  */
 case class Visual(var texture: Texture, var width: Int, var height: Int) extends Component {
-  def this() = this(null,0,0)
+  def this() = this(null,1,1)
 }

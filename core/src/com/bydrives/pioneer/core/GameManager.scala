@@ -1,7 +1,8 @@
 package com.bydrives.pioneer.core
 
 import com.artemis.{WorldConfiguration, World}
-import com.bydrives.pioneer.systems.{MovementSystem, TestSystem}
+import com.bydrives.pioneer.systems.MovementSystem
+import com.bydrives.pioneer.systems.managers.{WorldManager, TileManager}
 
 /**
  * Created by ivesv on 10/10/2015.
@@ -11,18 +12,20 @@ import com.bydrives.pioneer.systems.{MovementSystem, TestSystem}
  *
  */
 class GameManager(isServer: Boolean) {
-  var world: World = null
+  private var _world: World = _
 
-  def setWorld(world:World) : Unit = {
-    this.world = world
+  def world = _world
+  def world_=(world:World) : Unit = {
+    _world = world
   }
 
   /**
    * Register common systems between client and server.
    */
   def registerSystems(worldConfiguration: WorldConfiguration): WorldConfiguration = {
-    worldConfiguration.setSystem(new TestSystem)
     worldConfiguration.setSystem(new MovementSystem)
+    worldConfiguration.setSystem(new TileManager)
+    worldConfiguration.setSystem(new WorldManager("Earth", 300, 300))
   }
   /**
    * Gets called every frame

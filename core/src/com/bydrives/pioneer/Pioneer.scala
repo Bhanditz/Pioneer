@@ -1,10 +1,10 @@
 package com.bydrives.pioneer
 
-import com.badlogic.gdx.{Gdx, ApplicationAdapter}
+import com.badlogic.gdx.{Game, Gdx}
 import com.bydrives.pioneer.core.client.ClientManager
 import com.bydrives.pioneer.core.server.ServerManager
 
-class Pioneer extends ApplicationAdapter {
+class Pioneer extends Game {
   private var clientManager: ClientManager = null
   private var serverManager: ServerManager = null
 
@@ -15,6 +15,8 @@ class Pioneer extends ApplicationAdapter {
 
     clientManager = new ClientManager
     serverManager = new ServerManager
+
+    setScreen(clientManager)
   }
 
   override def render {
