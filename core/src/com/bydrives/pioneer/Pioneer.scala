@@ -1,6 +1,6 @@
 package com.bydrives.pioneer
 
-import com.badlogic.gdx.{Game, Gdx}
+import com.badlogic.gdx.{Application, Game, Gdx}
 import com.bydrives.pioneer.core.client.ClientManager
 import com.bydrives.pioneer.core.server.ServerManager
 
@@ -10,6 +10,7 @@ class Pioneer extends Game {
 
   override def create(): Unit = {
     Gdx.graphics.setDisplayMode(1280, 720, false)
+    Gdx.app.setLogLevel(Application.LOG_DEBUG)
 
     println("Starting Pioneer...")
 

@@ -21,7 +21,7 @@ class MovementSystem extends IteratingSystem(Aspect.all(classOf[Position], class
     vel.vx += vel.ax * getWorld.getDelta
     vel.vy += vel.ay * getWorld.getDelta
 
-    pos.x += vel.vx * getWorld.getDelta / 2
-    pos.y += vel.vy * getWorld.getDelta / 2
+    pos.x += vel.vx * getWorld.getDelta
+    pos.y += vel.vy * getWorld.getDelta
   }
 }
