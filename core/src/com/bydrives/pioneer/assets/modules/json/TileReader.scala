@@ -30,7 +30,7 @@ object TileReader extends ObjectReader[Tile] {
     val reader: JsonReader = new JsonReader
     val jsonValue: JsonValue = reader.parse(file)
     try {
-      val texture: Texture = new Texture(Gdx.files.local(file.parent().path() + "/" + jsonValue.getString("texture", file.nameWithoutExtension())))
+      val texture: Texture = new Texture(Gdx.files.local(file.parent().path() + "/" + jsonValue.getString("texture", file.nameWithoutExtension() + ".png")))
       val name: String = s"${module.name.toLowerCase}:${jsonValue.getString("name")}"
       new Tile(name, texture)
     } catch {
