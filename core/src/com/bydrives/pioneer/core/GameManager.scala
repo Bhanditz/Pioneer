@@ -3,7 +3,7 @@ package com.bydrives.pioneer.core
 import com.artemis.{WorldConfiguration, World}
 import com.bydrives.pioneer.assets.modules.ModuleLoader
 import com.bydrives.pioneer.systems.MovementSystem
-import com.bydrives.pioneer.systems.managers.{WorldManager, TileManager}
+import com.bydrives.pioneer.systems.managers.WorldManager
 
 /**
  * Created by ivesv on 10/10/2015.
@@ -25,7 +25,6 @@ class GameManager(isServer: Boolean) {
    */
   def registerSystems(worldConfiguration: WorldConfiguration): WorldConfiguration = {
     worldConfiguration.setSystem(new MovementSystem)
-    worldConfiguration.setSystem(new TileManager)
     worldConfiguration.setSystem(new WorldManager("Earth", 300, 300))
   }
 

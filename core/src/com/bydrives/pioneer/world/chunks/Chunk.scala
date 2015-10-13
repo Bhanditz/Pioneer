@@ -1,5 +1,7 @@
 package com.bydrives.pioneer.world.chunks
 
+import com.bydrives.pioneer.world.{TileRegistry, Tile}
+
 /**
  * Created by ivesv on 10/12/2015.
  *
@@ -11,9 +13,10 @@ class Chunk(width: Int, height: Int, x: Int, y: Int) {
    */
   val entities = Set[Int]()
   /**
-   * 1D array of tiles, for chunk dimensions 5 * 5 the array is 25 ints long
+   * 1D array of tiles, eg: chunk dimensions 5 * 5 the array is 25 tiles long
+   * This is cheap in memory, since we are only storing references
    */
-  val tiles = new Array[Int](width*height)
+  val tiles = new Array[Tile](width*height)
 
   generateChunk()
 
@@ -23,7 +26,7 @@ class Chunk(width: Int, height: Int, x: Int, y: Int) {
    * @param y coordinate
    * @return Int of tile
    */
-  def getTile(x: Int, y: Int): Int = tiles(x + y * width)
+  def getTile(x: Int, y: Int): Tile = tiles(x + y * width)
 
   /**
    * Check if coordinate is in chunk
@@ -37,8 +40,8 @@ class Chunk(width: Int, height: Int, x: Int, y: Int) {
    * Generates the chunk, stub for now.
    */
   def generateChunk(): Unit = {
-    for(i <- tiles) {
-      tiles(i) = 0
+    for((t, i: Int) <- tiles.view.zipWithIndex) {
+      tiles(i) = TileRegistry.getTile("grass")
     }
   }
 }

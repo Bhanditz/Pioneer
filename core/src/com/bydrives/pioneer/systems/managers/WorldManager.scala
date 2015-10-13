@@ -2,6 +2,8 @@ package com.bydrives.pioneer.systems.managers
 
 import com.artemis.BaseSystem
 import com.artemis.annotations.Wire
+import com.bydrives.pioneer.factories.TileFactory
+import com.bydrives.pioneer.world.Tile
 import com.bydrives.pioneer.world.chunks.Chunk
 
 /**
@@ -14,9 +16,8 @@ import com.bydrives.pioneer.world.chunks.Chunk
  * @param height  Height of world (multiplied by CHUNK_SIZE) (world is loopable)
  */
 @Wire
-class WorldManager(name: String = "Earth", width: Int, height: Int) extends BaseSystem{
+class WorldManager(name: String = "Earth", width: Int, height: Int) extends BaseSystem {
   val CHUNK_SIZE = 16
-  var tileManager: TileManager = null
 
   var chunks = Map[Int, Chunk]()
 
@@ -34,8 +35,8 @@ class WorldManager(name: String = "Earth", width: Int, height: Int) extends Base
       if(!chunks.contains(xPos + yPos * CHUNK_SIZE)) {
         val chunk = new Chunk(CHUNK_SIZE, CHUNK_SIZE, xPos, yPos)
         chunks += (xPos + yPos * CHUNK_SIZE -> chunk)
-        for((tile: Int, pos) <- chunk.tiles.view.zipWithIndex) {
-          tileManager.createTileEntity(tile, xPos * CHUNK_SIZE + (pos % CHUNK_SIZE), yPos * CHUNK_SIZE + pos / CHUNK_SIZE)
+        for((tile: Tile, pos) <- chunk.tiles.view.zipWithIndex) {
+          TileFactory.create(tile, xPos * CHUNK_SIZE + (pos % CHUNK_SIZE), yPos * CHUNK_SIZE + pos / CHUNK_SIZE, getWorld)
         }
       }
     }
