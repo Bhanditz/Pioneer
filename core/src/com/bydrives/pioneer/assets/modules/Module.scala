@@ -5,6 +5,6 @@ package com.bydrives.pioneer.assets.modules
  *
  * A module itself, serializable
  */
-class Module(name: String, version: String, location: String) {
+case class Module(name: String, version: String, location: String) {
   override def toString: String = s"$name: $version"
 }

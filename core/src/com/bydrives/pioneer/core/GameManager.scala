@@ -1,6 +1,6 @@
 package com.bydrives.pioneer.core
 
-import com.artemis.{WorldConfiguration, World}
+import com.artemis.{World, WorldConfiguration}
 import com.bydrives.pioneer.assets.modules.ModuleLoader
 import com.bydrives.pioneer.systems.MovementSystem
 import com.bydrives.pioneer.systems.managers.WorldManager
@@ -18,18 +18,19 @@ class GameManager(isServer: Boolean) {
   def world = _world
   def world_=(world:World) : Unit = {
     _world = world
+    ModuleLoader.loadModules(world)
   }
 
   /**
    * Register common systems between client and server.
    */
   def registerSystems(worldConfiguration: WorldConfiguration): WorldConfiguration = {
-    worldConfiguration.setSystem(new MovementSystem)
     worldConfiguration.setSystem(new WorldManager("Earth", 300, 300))
+    worldConfiguration.setSystem(new MovementSystem)
   }
 
   def postRun(): Unit = {
-    val moduleLoader: ModuleLoader = new ModuleLoader
+    world.getSystem(classOf[WorldManager]).createWorld()
   }
 
   /**

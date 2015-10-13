@@ -21,7 +21,9 @@ class WorldManager(name: String = "Earth", width: Int, height: Int) extends Base
 
   var chunks = Map[Int, Chunk]()
 
-  override def initialize(): Unit = generateWorld(0, 0, 3)
+  def createWorld(): Unit = {
+    generateWorld(0, 0, 3)
+  }
 
   /**
    * Generates a world based on position and

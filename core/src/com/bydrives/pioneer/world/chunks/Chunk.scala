@@ -41,7 +41,7 @@ class Chunk(width: Int, height: Int, x: Int, y: Int) {
    */
   def generateChunk(): Unit = {
     for((t, i: Int) <- tiles.view.zipWithIndex) {
-      tiles(i) = TileRegistry.getTile("grass")
+      tiles(i) = TileRegistry.getTile("pioneer:grass")
     }
   }
 }
