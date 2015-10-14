@@ -1,6 +1,7 @@
 package com.bydrives.pioneer
 
 import com.badlogic.gdx.{Application, Game, Gdx}
+import com.bydrives.pioneer.assets.modules.ModuleLoader
 import com.bydrives.pioneer.core.client.ClientManager
 import com.bydrives.pioneer.core.server.ServerManager
 
@@ -14,6 +15,7 @@ class Pioneer extends Game {
 
     println("Starting Pioneer...")
 
+    ModuleLoader.loadModules()
     clientManager = new ClientManager
     serverManager = new ServerManager
 

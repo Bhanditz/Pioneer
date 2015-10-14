@@ -38,7 +38,7 @@ object ModuleLoader {
     modules
   }
 
-  def loadModules(world: World): Unit = {
+  def loadModules(): Unit = {
     modules.foreach(module => {
       val dir: FileHandle = Gdx.files.local(module.location)
       val tiles: Set[Tile] = TileReader.readFolder(dir, module)

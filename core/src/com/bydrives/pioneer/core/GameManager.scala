@@ -1,7 +1,6 @@
 package com.bydrives.pioneer.core
 
 import com.artemis.{World, WorldConfiguration}
-import com.bydrives.pioneer.assets.modules.ModuleLoader
 import com.bydrives.pioneer.systems.MovementSystem
 import com.bydrives.pioneer.systems.managers.WorldManager
 
@@ -18,7 +17,6 @@ class GameManager(isServer: Boolean) {
   def world = _world
   def world_=(world:World) : Unit = {
     _world = world
-    ModuleLoader.loadModules(world)
   }
 
   /**
