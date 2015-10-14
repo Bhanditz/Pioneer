@@ -1,7 +1,12 @@
 package com.bydrives.pioneer.systems.managers
 
+import java.lang.Math.random
+
 import com.artemis.BaseSystem
+import com.artemis.Entity
 import com.artemis.annotations.Wire
+import com.bydrives.pioneer.components.Position
+import com.bydrives.pioneer.components.client.Visual
 import com.bydrives.pioneer.factories.TileFactory
 import com.bydrives.pioneer.world.Tile
 import com.bydrives.pioneer.world.chunks.Chunk
@@ -39,6 +44,15 @@ class WorldManager(name: String = "Earth", width: Int, height: Int) extends Base
         chunks += (xPos + yPos * CHUNK_SIZE -> chunk)
         for((tile: Tile, pos) <- chunk.tiles.view.zipWithIndex) {
           TileFactory.create(tile, xPos * CHUNK_SIZE + (pos % CHUNK_SIZE), yPos * CHUNK_SIZE + pos / CHUNK_SIZE, getWorld)
+          val ent: Entity = getWorld().createEntity()
+          val pos2 = getWorld.getMapper(classOf[Position]).create(ent)
+          val vis2 = getWorld.getMapper(classOf[Visual]).create(ent)
+
+          pos2.x =  xPos * CHUNK_SIZE + (pos % CHUNK_SIZE) + random().toFloat
+          pos2.y = yPos * CHUNK_SIZE + pos / CHUNK_SIZE + random().toFloat
+          vis2.texture = tile.decals.head.texture
+          vis2.width = 0.2f
+          vis2.height = 0.2f
         }
       }
     }

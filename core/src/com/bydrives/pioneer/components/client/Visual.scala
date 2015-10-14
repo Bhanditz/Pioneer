@@ -8,6 +8,6 @@ import com.badlogic.gdx.graphics.Texture
  * Adds visual to Entity
  * @param texture The visual itself
  */
-case class Visual(var texture: Texture, var width: Int, var height: Int) extends Component {
+case class Visual(var texture: Texture, var width: Float, var height: Float) extends Component {
   def this() = this(null,1,1)
 }
