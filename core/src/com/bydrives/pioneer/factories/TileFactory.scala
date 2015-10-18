@@ -1,7 +1,6 @@
 package com.bydrives.pioneer.factories
 
 import com.artemis._
-import com.badlogic.gdx.graphics.g2d.Sprite
 import com.bydrives.pioneer.components.client.Visual
 import com.bydrives.pioneer.components.{Position, TileType}
 import com.bydrives.pioneer.utils.SimplexNoise
@@ -43,7 +42,7 @@ object TileFactory {
     var yStep = y.toFloat
 
 
-    val persistence: Float = 2
+    val persistence: Float = 1
 
 
     while (xStep <= x + 1) {
@@ -52,7 +51,7 @@ object TileFactory {
         var amplitude: Float = 1
         var frequency: Float = 1
         var maxValue: Float = 1
-        val noise = (0 until 3 map((i: Int) => {
+        val noise = (0 until 6 map((i: Int) => {
           val lNoise = SimplexNoise.noise(xStep, yStep) * amplitude
 
           maxValue += amplitude
@@ -69,11 +68,11 @@ object TileFactory {
           positionComponent.x = xStep
           positionComponent.y = yStep
           visualComponent.texture = decal.texture
-          visualComponent.width = decal.width * 1.5f
-          visualComponent.height = decal.height * 1.5f
+          visualComponent.width = decal.width
+          visualComponent.height = decal.height
 
-          xStep += visualComponent.width
-          yStep += visualComponent.height
+          xStep += visualComponent.width / 2
+          yStep += visualComponent.height / 2
         }
         yStep += stepSize
       }

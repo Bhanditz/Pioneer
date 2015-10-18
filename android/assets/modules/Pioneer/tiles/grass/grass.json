@@ -1,7 +1,7 @@
 {
   "name": "grass",
   "decals": {
-    "density": 1,
+    "density": 2,
     "items": [
       {
         "name": "bush1",
