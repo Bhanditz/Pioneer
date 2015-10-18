@@ -35,10 +35,17 @@ object TileReader extends ObjectReader[Tile] {
       val name: String = s"${module.name.toLowerCase}:${jsonValue.getString("name")}"
       val tile = new Tile(name, texture)
 
-      if (dir.child("decals").exists()) {
+      if (dir.child("decals").exists() && jsonValue.get("decals") != null) {
         var decals = Set[Decal]()
-        dir.child("decals").list(".png").foreach((file: FileHandle) => decals += new Decal(new Texture(file)))
+        val decalProperties = jsonValue.get("decals")
+        val itemIterator = decalProperties.get("items").iterator()
+        while(itemIterator.hasNext) {
+          val item = itemIterator.next()
+          decals += new Decal(new Texture(dir.child("decals").child(item.getString("name") + ".png")), item.getInt("quantity"))
+        }
+        tile.decalDensity = decalProperties.getInt("density")
         tile.decals = decals
+        tile.generateDecalQuantityList()
       }
 
       tile

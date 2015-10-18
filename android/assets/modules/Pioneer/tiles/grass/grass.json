@@ -1,3 +1,32 @@
 {
-    "name": "grass"
+  "name": "grass",
+  "decals": {
+    "density": 1,
+    "items": [
+      {
+        "name": "bush1",
+        "quantity": 1
+      },
+      {
+        "name": "grass1",
+        "quantity": 4
+      },
+      {
+        "name": "grass2",
+        "quantity": 4
+      },
+      {
+        "name": "grass3",
+        "quantity": 3
+      },
+      {
+        "name": "grass4",
+        "quantity": 2
+      },
+      {
+        "name": "grass5",
+        "quantity": 2
+      }
+    ]
+  }
 }
