@@ -9,23 +9,23 @@
       },
       {
         "name": "grass1",
-        "quantity": 4
+        "quantity": 8
       },
       {
         "name": "grass2",
-        "quantity": 4
+        "quantity": 7
       },
       {
         "name": "grass3",
-        "quantity": 3
+        "quantity": 9
       },
       {
         "name": "grass4",
-        "quantity": 2
+        "quantity": 5
       },
       {
         "name": "grass5",
-        "quantity": 2
+        "quantity": 5
       }
     ]
   }

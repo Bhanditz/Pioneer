@@ -61,7 +61,7 @@ object TileFactory {
           lNoise
         }) sum) / maxValue
         if(noise.abs > 0.6) {
-          val decal = tile.decalQuantityList((scala.math.random * tile.decalQuantityList.length.toFloat).toInt)
+          val decal = tile.decalQuantityList((Math.random() * tile.decalQuantityList.length.toFloat).toInt)
           val entity: Entity = world.createEntity()
           val positionComponent = position.create(entity)
           val visualComponent = visual.create(entity)
