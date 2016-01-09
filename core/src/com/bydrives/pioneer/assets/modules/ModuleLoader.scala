@@ -1,6 +1,5 @@
 package com.bydrives.pioneer.assets.modules
 
-import com.artemis.World
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.utils.{JsonReader, JsonValue}
@@ -41,8 +40,12 @@ object ModuleLoader {
   def loadModules(): Unit = {
     modules.foreach(module => {
       val dir: FileHandle = Gdx.files.local(module.location)
+
+      // Load tiles
       val tiles: Set[Tile] = TileReader.readFolder(dir, module)
       tiles.foreach(TileRegistry.addTile)
+      
+      Gdx.app.debug("ModuleLoader", s"Loaded ${module}")
     })
   }
 }

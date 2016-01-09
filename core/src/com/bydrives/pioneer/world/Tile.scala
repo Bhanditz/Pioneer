@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture
 /**
  * Created by ivesv on 10/12/2015.
  */
-case class Tile(name: String, texture: Texture) {
+case class Tile(name: String, textures: Array[Texture], width: Int = 1, height: Int = 1, depth: Int = 1) {
   var decals = Set[Decal]()
   var decalDensity = 0
 

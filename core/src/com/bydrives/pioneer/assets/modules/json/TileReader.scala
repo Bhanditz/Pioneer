@@ -31,9 +31,11 @@ object TileReader extends ObjectReader[Tile] {
     val config: FileHandle = dir.child(dir.name() + ".json")
     val jsonValue: JsonValue = reader.parse(config)
     try {
-      val texture: Texture = new Texture(Gdx.files.local(dir.path() + "/" + jsonValue.getString("texture", dir.name() + ".png")))
+      val topTexture: Texture = new Texture(Gdx.files.local(dir.path() + "/" + jsonValue.getString("texture", dir.name() + "-top.png")))
+      val sideTexture: Texture = new Texture(Gdx.files.local(dir.path() + "/" + jsonValue.getString("texture", dir.name() + "-side.png")))
+      val topSideTexture: Texture = new Texture(Gdx.files.local(dir.path() + "/" + jsonValue.getString("texture", dir.name() + "-topside.png")))
       val name: String = s"${module.name.toLowerCase}:${jsonValue.getString("name")}"
-      val tile = new Tile(name, texture)
+      val tile = new Tile(name, Array[Texture](topTexture, sideTexture, topSideTexture))
 
       if (dir.child("decals").exists() && jsonValue.get("decals") != null) {
         var decals = Set[Decal]()
