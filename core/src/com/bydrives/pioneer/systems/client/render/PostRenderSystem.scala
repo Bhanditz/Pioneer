@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 /**
  * Created by ives on 18/10/15.
  */
-class RenderSystemEnder(batch: SpriteBatch, camera: OrthographicCamera) extends BaseSystem {
+class PostRenderSystem(batch: SpriteBatch, camera: OrthographicCamera) extends BaseSystem {
   override def processSystem(): Unit = {}
   override def end(): Unit = {
     super.end()

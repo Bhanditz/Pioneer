@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 /**
  * Created by ives on 18/10/15.
  */
-class RenderSystemStarter(batch: SpriteBatch, camera: OrthographicCamera) extends BaseSystem {
+class PreRenderSystem(batch: SpriteBatch, camera: OrthographicCamera) extends BaseSystem {
   override def begin(): Unit = {
     super.begin()
     Gdx.gl.glClearColor(0, 0, 0, 1)

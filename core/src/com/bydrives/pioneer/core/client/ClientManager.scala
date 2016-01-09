@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.{Gdx, Screen}
 import com.bydrives.pioneer.core.GameManager
-import com.bydrives.pioneer.systems.client.render.{RenderSystemEnder, TileRenderSystem, RenderSystemStarter, RenderSystem}
+import com.bydrives.pioneer.systems.client.render.{PostRenderSystem, TileRenderSystem, PreRenderSystem, RenderSystem}
 
 /**
  * Created by ivesv on 10/10/2015.
@@ -18,10 +18,10 @@ class ClientManager() extends GameManager(false) with Screen {
 
   override def registerSystems(worldConfiguration: WorldConfiguration): WorldConfiguration = {
     super.registerSystems(worldConfiguration)
-    worldConfiguration.setSystem(new RenderSystemStarter(batch, camera))
+    worldConfiguration.setSystem(new PreRenderSystem(batch, camera))
     worldConfiguration.setSystem(new TileRenderSystem(batch, camera))
     worldConfiguration.setSystem(new RenderSystem(batch, camera))
-    worldConfiguration.setSystem(new RenderSystemEnder(batch, camera))
+    worldConfiguration.setSystem(new PostRenderSystem(batch, camera))
   }
 
   override def resize(width: Int, height: Int): Unit = {
