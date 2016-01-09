@@ -1,12 +1,7 @@
 package com.bydrives.pioneer.systems.managers
 
-import java.lang.Math.random
-
 import com.artemis.BaseSystem
-import com.artemis.Entity
 import com.artemis.annotations.Wire
-import com.bydrives.pioneer.components.Position
-import com.bydrives.pioneer.components.client.Visual
 import com.bydrives.pioneer.factories.TileFactory
 import com.bydrives.pioneer.world.Tile
 import com.bydrives.pioneer.world.chunks.Chunk
@@ -22,7 +17,7 @@ import com.bydrives.pioneer.world.chunks.Chunk
  */
 @Wire
 class WorldManager(name: String = "Earth", width: Int, height: Int) extends BaseSystem {
-  val CHUNK_SIZE = 16
+  val CHUNK_SIZE = 32
 
   var chunks = Map[Int, Chunk]()
 
