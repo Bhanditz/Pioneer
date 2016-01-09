@@ -22,7 +22,7 @@ class WorldManager(name: String = "Earth", width: Int, height: Int) extends Base
   var chunks = Map[Int, Chunk]()
 
   def createWorld(): Unit = {
-    generateWorld(0, 0, 3)
+    generateWorld(0, 0, 0, 3)
   }
 
   /**
@@ -30,15 +30,20 @@ class WorldManager(name: String = "Earth", width: Int, height: Int) extends Base
    * @param x
    * @param y
    */
-  def generateWorld(x: Float, y: Float, radius: Int): Unit = {
+  def generateWorld(x: Float, y: Float, z: Int, radius: Int): Unit = {
     val chunkPosX: Int = x.toInt / CHUNK_SIZE
     val chunkPosY: Int = y.toInt / CHUNK_SIZE
-    for(xPos <- chunkPosX - radius / 2 to chunkPosX + radius / 2 / CHUNK_SIZE; yPos <- chunkPosY - radius / 2 to chunkPosY + radius / 2 / CHUNK_SIZE) {
+    val chunkPosZ: Int = z / CHUNK_SIZE
+
+    for(xPos <- chunkPosX - radius / 2 to chunkPosX + radius / 2 / CHUNK_SIZE;
+        yPos <- chunkPosY - radius / 2 to chunkPosY + radius / 2 / CHUNK_SIZE;
+        zPos <- chunkPosZ - radius / 2 to chunkPosZ + radius / 2 / CHUNK_SIZE) {
       if(!chunks.contains(xPos + yPos * CHUNK_SIZE)) {
-        val chunk = new Chunk(CHUNK_SIZE, CHUNK_SIZE, xPos, yPos)
-        chunks += (xPos + yPos * CHUNK_SIZE -> chunk)
+        val chunk = new Chunk(CHUNK_SIZE, CHUNK_SIZE, CHUNK_SIZE, xPos, yPos, zPos)
+        chunks += (xPos + yPos * CHUNK_SIZE + zPos * CHUNK_SIZE * CHUNK_SIZE -> chunk)
         for((tile: Tile, pos) <- chunk.tiles.view.zipWithIndex) {
-          TileFactory.create(tile, xPos * CHUNK_SIZE + (pos % CHUNK_SIZE), yPos * CHUNK_SIZE + pos / CHUNK_SIZE, getWorld)
+
+          TileFactory.create(tile, xPos * CHUNK_SIZE + (pos % CHUNK_SIZE), yPos * CHUNK_SIZE + pos / CHUNK_SIZE, zPos * CHUNK_SIZE + pos / CHUNK_SIZE / CHUNK_SIZE, getWorld)
         }
       }
     }

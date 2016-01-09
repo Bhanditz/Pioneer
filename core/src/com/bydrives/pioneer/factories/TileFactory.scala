@@ -11,13 +11,14 @@ import com.bydrives.pioneer.world.Tile
  * Used to create tiles
  */
 object TileFactory {
-  def create(tile: Tile, x: Int, y: Int, world: World): Entity = {
+  def create(tile: Tile, x: Int, y: Int, z: Int, world: World): Entity = {
     val entity: Entity = world.createEntity()
     val position: Position = world.getMapper(classOf[Position]).create(entity)
     val tileType: TileType = world.getMapper(classOf[TileType]).create(entity)
     val visual: Visual = world.getMapper(classOf[Visual]).create(entity)
     position.x = x
     position.y = y
+    position.z = z
     tileType.tileID = tile.name
     visual.texture = tile.texture
     visual.width = 1
