@@ -25,8 +25,8 @@ class ClientManager() extends GameManager(false) with Screen {
   }
 
   override def resize(width: Int, height: Int): Unit = {
-    camera.viewportWidth = 30f                  // Viewport of 30 units!
-    camera.viewportHeight = 30f * height/width  // Lets keep things in proportion.
+    camera.viewportWidth = 60f                  // Viewport of 30 units!
+    camera.viewportHeight = 60f * height/width  // Lets keep things in proportion.
     camera.update()
   }
 
